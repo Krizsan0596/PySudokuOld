@@ -1,0 +1,26 @@
+<html>  
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Sudoku Solver</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/styles.css') }}">
+    </head>
+    <body>
+        <h2>Enter your Sudoku puzzle</h2>
+        <h4>0 represents empty places</h4>
+        <form action="{{ url_for('get_table') }}" method="post">
+            <div class="container"class="container">
+                <form method="POST">
+                    <input type="text" name="frow" id="frow" min="0" max="9" placeholder="First Row" size="27" autocomplete="off"></br>
+                    <input type="text" name="srow" id="srow" min="0" max="9" placeholder="Second Row" size="27" autocomplete="off"></br>
+                    <input type="text" name="trow" id="trow" min="0" max="9" placeholder="Third Row" size="27" autocomplete="off"></br>
+                    <input type="text" name="forow" id="forow" min="0" max="9" placeholder="Fourth Row" size="27" autocomplete="off"></br>
+                    <input type="text" name="firow" id="firow" min="0" max="9" placeholder="Fifth Row" size="27" autocomplete="off"></br>
+                    <input type="text" name="sirow" id="six" min="0" max="9" placeholder="Sixth Row" size="27" autocomplete="off"></br>
+                    <input type="text" name="sevrow" id="sevrow" min="0" max="9" placeholder="Seventh Row" size="27" autocomplete="off"></br>
+                    <input type="text" name="eigrow" id="eigrow" min="0" max="9" placeholder="Eighth Row" size="27" autocomplete="off"></br>
+                    <input type="text" name="ninrow" id="ninrow" min="0" max="9" placeholder="Ninth Row" size="27" autocomplete="off"></br></br>
+                    <button class="subbutton" type="submit" style="vertical-align:middle"><span>Solve!</span></button>
+                </form>
+            </div>
+</html>
