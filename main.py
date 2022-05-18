@@ -1,27 +1,5 @@
-from flask import Flask, render_template, request, redirect, url_for, has_request_context
-from flask.logging import default_handler, logging, create_logger
+from flask import Flask, render_template, request, redirect, url_for
 app = Flask(__name__)
-class RequestFormatter(logging.Formatter):
-    def format(self, record):
-        if has_request_context():
-            record.url = request.url
-            record.remote_addr = request.remote_addr
-            record.args = request.args
-            record.form = request.form
-        else:
-            record.url = None
-            record.remote_addr = None
-            record.args = None
-            record.form = None
-
-        return super().format(record)
-
-formatter = RequestFormatter(
-    '[%(asctime)s] %(remote_addr)s requested %(url)s\nArgs: %(args)s\nForm: %(form)s\n%(message)s')
-handler = logging.StreamHandler()
-handler.setFormatter(formatter)
-app.logger.addHandler(handler)
-
 
 def split_str(str: str): #try splitting with multiple delimiters
     result = []
@@ -37,8 +15,8 @@ def split_str(str: str): #try splitting with multiple delimiters
 sudoku = [[],[],[],[],[],[],[],[],[]]
 
 
-solved = ""
-def display(table, solved): #set display string
+def display(table): #set display string
+    solved = ""
     for i in range(len(table)):
         if i % 3 == 0 and i != 0:
             solved += "\n- - - - - - - - - - - -\n"
@@ -48,10 +26,9 @@ def display(table, solved): #set display string
             if j == 8:
                 solved += str(table[i][j]) + "\n"
             else:
-                solved += str(table[i][j]) + " "
-    print(solved)
-#    solved = solved.split("\n")
-    solved = solved.replace("\n", "<br>")
+                solved += str(table[i][j]) + " "   
+    solved = solved.split("\n")
+    return solved
 def validator(table,num,pos): #check if number is valid
     for i in range(len(table[0])):
         if table[pos[0]][i] == num and pos[1] != i:
@@ -107,7 +84,7 @@ def get_table():
 @app.route('/solve', methods=['GET']) #return solved sudoku
 def return_solve():
     solve(sudoku)
-    display(sudoku, solved)
+    solved = display(sudoku)
     print(solved)
     return render_template('solve.html', solved_puzzle=solved)
 

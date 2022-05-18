@@ -1,0 +1,12 @@
+body{
+    background-color: #cccccc;
+}
+
+#title{
+    color: greenyellow;
+    line-height: 3em;
+}
+#solved{
+    line-height: 1px;
+    
+}
