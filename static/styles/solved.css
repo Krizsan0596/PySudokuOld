@@ -1,5 +1,5 @@
 body{
-    background-color: #cccccc;
+    background-color: #b8b8b8;
 }
 
 #title{
@@ -8,5 +8,7 @@ body{
 }
 #solved{
     line-height: 1px;
+    font-style: playfair display;
+    
     
 }

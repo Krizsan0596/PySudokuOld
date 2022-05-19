@@ -19,7 +19,7 @@ def display(table): #set display string
     solved = ""
     for i in range(len(table)):
         if i % 3 == 0 and i != 0:
-            solved += "\n- - - - - - - - - - - -\n"
+            solved += "\n- - - - - - - - - - - - -\n"
         for j in range(len(table[0])):
             if j % 3 == 0 and j != 0:
                 solved += " | "
@@ -88,8 +88,5 @@ def return_solve():
     print(solved)
     return render_template('solve.html', solved_puzzle=solved)
 
-app.run()
-display(sudoku)
-solve(sudoku)
-print("#########")
-display(sudoku)
+if __name__ == '__main__':
+    app.run()
