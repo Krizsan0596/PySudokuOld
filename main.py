@@ -81,9 +81,15 @@ def get_table():
         sudoku[8] = split_str(str(request.form['ninrow']))
         return redirect(url_for('return_solve'))
 
+@app.route('/unsolvable', methods=['GET']) #if sudoku is unsolvable
+def unsolvable():
+    return render_template('unsolvable.html')
+
 @app.route('/solve', methods=['GET']) #return solved sudoku
 def return_solve():
-    solve(sudoku)
+    solvable = solve(sudoku)
+    if not solvable:
+        return redirect(url_for('unsolvable'))
     solved = display(sudoku)
     print(solved)
     return render_template('solve.html', solved_puzzle=solved)

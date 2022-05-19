@@ -2,11 +2,15 @@ body{
     background-color: #b8b8b8;
 }
 
-#title{
+#solved{
     color: greenyellow;
     line-height: 3em;
 }
-#solved{
+#unsolved{
+    color: red;
+    line-height: 3em;
+}
+#puzzle{
     line-height: 1px;
     font-style: playfair display;
     
