@@ -6,4 +6,4 @@ RUN git clone https://github.com/Krizsan0596/PySudoku.git
 WORKDIR /home/Python/PySudoku
 RUN pip3 install -r requirements.txt
 RUN pip3 install uwsgi
-ENTRYPOINT ["uwsgi", "--master", "-p", "4", "-w", "app:app", "--socket", "0.0.0.0:5000"]
+ENTRYPOINT ["uwsgi", "--master", "-p", "4", "-w", "main:app", "--socket", "0.0.0.0:5000"]
