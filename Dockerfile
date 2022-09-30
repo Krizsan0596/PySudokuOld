@@ -8,7 +8,7 @@ RUN pip3 install -r requirements.txt
 RUN pip3 install uwsgi
 RUN mv pysudoku.service /etc/systemd/system/pysudoku.service
 RUN mv pysudoku /etc/nginx/sites-available/pysudoku
-RUN sudo ln -s /etc/nginx/sites-available/ /etc/nginx/sites-available/pysudoku
+RUN sudo ln -s /etc/nginx/sites-available/ /etc/nginx/sites-enabled/pysudoku
 RUN sudo unlink sudo unlink /etc/nginx/sites-enabled/default
 RUN sudo systemctl enable pysudoku
 RUN sudo systemctl enable nginx
