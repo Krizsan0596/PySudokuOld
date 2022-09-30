@@ -6,3 +6,8 @@ After=network.target
 User=root
 Group=www-data
 WorkingDirectory=/home/Python/PySudoku
+Environment="PATH=/usr/local/bin"
+ExecStart=/usr/local/bin/uwsgi --ini app.ini
+
+[Install]
+WantedBy=multi-user.target
