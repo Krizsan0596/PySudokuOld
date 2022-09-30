@@ -1,14 +1,11 @@
 FROM debian:latest
 EXPOSE 5000
-<<<<<<< HEAD
-RUN apt-get update && apt-get install -y python3-pip && apt-get install git -y && apt-get install -y systemd && apt-get install libpcre3 -y && apt-get clean && rm -rf /var/lib/apt/lists/*
-=======
-RUN apt-get update && apt-get install -y python3-pip && apt-get install git -y && apt-get install systemd && apt-get install libpcre3 -y && apt-get clean && rm -rf /var/lib/apt/lists/*
->>>>>>> 86701e5 (Service update)
+RUN apt-get update && apt-get install -y python3-pip && apt-get install sudo -y&& apt-get install git -y && apt-get install systemd && apt-get install libpcre3 -y && apt-get clean && rm -rf /var/lib/apt/lists/*
 WORKDIR /home/Python
 RUN git clone https://github.com/Krizsan0596/PySudoku.git
 WORKDIR /home/Python/PySudoku
 RUN pip3 install -r requirements.txt
 RUN pip3 install uwsgi
 RUN cp pysudoku.service /etc/systemd/system/pysudoku.service
+RUN sudo systemctl enable pysudoku
 ENTRYPOINT ["uwsgi", "--master", "-p", "4", "-w", "main:app", "--protocol=http", "--thunder-lock", "--socket", "0.0.0.0:5000"]
