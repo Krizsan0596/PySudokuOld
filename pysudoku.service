@@ -1,0 +1,8 @@
+[Unit]
+Description=uWSGI instance to serve PySudoku
+After=network.target
+
+[Service]
+User=root
+Group=www-data
+WorkingDirectory=/home/Python/PySudoku
