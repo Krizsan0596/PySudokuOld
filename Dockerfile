@@ -12,4 +12,5 @@ RUN sudo ln -s /etc/nginx/sites-available/ /etc/nginx/sites-enabled/pysudoku
 RUN sudo unlink /etc/nginx/sites-enabled/default
 RUN sudo systemctl enable pysudoku
 RUN sudo systemctl enable nginx
-ENTRYPOINT [ "tail", "-f", "/dev/null" ]
+ENTRYPOINT [ "tail" ]
+CMD [ ""-f", "/dev/null"" ]
