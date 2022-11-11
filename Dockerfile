@@ -13,4 +13,4 @@ RUN sudo unlink /etc/nginx/sites-enabled/default
 RUN sudo systemctl enable pysudoku
 RUN sudo systemctl enable nginx
 ENTRYPOINT [ "tail" ]
-CMD [ ""-f", "/dev/null"" ]
+CMD [ "-f", "/dev/null" ]
