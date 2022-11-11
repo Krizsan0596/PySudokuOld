@@ -10,7 +10,7 @@ RUN mv pysudoku.service /etc/systemd/system/pysudoku.service
 RUN mv pysudoku /etc/nginx/sites-available/pysudoku
 RUN sudo ln -s /etc/nginx/sites-available/ /etc/nginx/sites-enabled/pysudoku
 RUN sudo unlink /etc/nginx/sites-enabled/default
-RUN sudo systemctl enable pysudoku
-RUN sudo systemctl enable nginx
+RUN sudo chkconfig pysudoku on 
+RUN sudo chkconfig nginx on
 ENTRYPOINT [ "tail" ]
 CMD [ "-f", "/dev/null" ]
